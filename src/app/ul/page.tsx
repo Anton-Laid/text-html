@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { remakeTextInHTMLUlLi } from "@/shared/utils/utils";
 import { Textarea } from "@/widgets";
+import img from "../../../public/images/ul.jpeg";
 
 const st = `Наименование объекта НФА 
 Инвентарный номер
@@ -17,7 +18,8 @@ export default function () {
 
   return (
     <Textarea
-      description="Вставить данные для списка"
+      img={img}
+      description="Вставить данные для списка, текст не должен быть в одну строку. Пукт enter, пукт enter"
       onRefactor={setTextarea}
       text={remakeTextInHTMLUlLi(textarea)}
     />

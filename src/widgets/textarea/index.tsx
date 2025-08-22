@@ -1,13 +1,21 @@
-import { ButtonBack } from "@/shared/ui";
+import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
+
+import { ButtonBack } from "@/shared/ui";
 
 interface TextareaProps {
   text: string;
+  img?: StaticImageData;
   onRefactor: (str: string) => void;
   description: string;
 }
 
-export const Textarea = ({ onRefactor, text, description }: TextareaProps) => {
+export const Textarea = ({
+  onRefactor,
+  text,
+  description,
+  img,
+}: TextareaProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -24,6 +32,7 @@ export const Textarea = ({ onRefactor, text, description }: TextareaProps) => {
     <>
       <div className="w-100 mt-[1rem] m-auto flex flex-col gap-[1rem] items-center">
         <ButtonBack />
+        {img && <Image alt="img" src={img} />}
         <h4 className="m-t">Заполнить данные</h4>
         <p>{description}</p>
         <textarea

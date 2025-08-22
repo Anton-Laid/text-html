@@ -9,4 +9,9 @@ export const dataLinks = [
     label: "Image table",
     href: "/image-table",
   },
+  {
+    id: 2,
+    label: "Шаги",
+    href: "/steps",
+  },
 ];

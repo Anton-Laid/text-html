@@ -48,3 +48,20 @@ export function remakeTableImage(numberScr: number, textScr: string) {
         </span>
       </p>`;
 }
+
+export function remakeStep(numberScr: number, textScr: string) {
+  return `<p>
+  <span
+    style="
+      font-family: georgia, 'times new roman', times, serif;
+      font-size: medium;
+      color: #4c526d;
+    "
+    data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium; color: #4c526d;"
+    ><b
+      ><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span
+      ><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span
+      ><span>&nbsp;</span><span>&nbsp;</span>        Шаг ${numberScr}. ${textScr}</span
+      >
+</p>`;
+}

@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 
-import { remakeTableImage } from "@/shared/utils/utils";
+import { remakeStep } from "@/shared/utils/utils";
 import { FormNumStr } from "@/widgets";
-import img from "../../../public/images/img-table.png";
+import img from "../../../public/images/step.png";
 
-export default function ImageTable() {
+export default function Steps() {
   const [textarea, setTextarea] = useState<string>("");
   const [numberScr, setNumberScr] = useState<number>(0);
 
@@ -17,10 +17,10 @@ export default function ImageTable() {
   return (
     <FormNumStr
       img={img}
-      labelNumInp="Номер скриншета"
-      labelStrInp="Описание скриншета"
+      labelNumInp="Номер шага"
+      labelStrInp="Тест"
       description="Редактор для шагов"
-      text={remakeTableImage(numberScr, textarea)}
+      text={remakeStep(numberScr, textarea)}
       getData={handelData}
     />
   );
