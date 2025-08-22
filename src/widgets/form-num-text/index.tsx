@@ -27,6 +27,7 @@ export const FormNumStr = ({
 
   useEffect(() => {
     getData(textarea, numberScr);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [textarea, numberScr]);
 
   return (
@@ -39,7 +40,7 @@ export const FormNumStr = ({
         <label className="flex gap-10 items-center" id="1">
           {labelNumInp}
           <input
-            type="number"
+            type="text"
             onChange={(e) => setNumberScr(+e.target.value)}
             className="border-2 border-solid p-[0.5rem] rounded-sm"
             id="1"

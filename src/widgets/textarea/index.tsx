@@ -32,7 +32,7 @@ export const Textarea = ({
     <>
       <div className="w-100 mt-[1rem] m-auto flex flex-col gap-[1rem] items-center">
         <ButtonBack />
-        {img && <Image alt="img" src={img} />}
+        {img && <Image alt="img" src={img} height={400} />}
         <h4 className="m-t">Заполнить данные</h4>
         <p>{description}</p>
         <textarea
