@@ -18,7 +18,7 @@ export default function Steps() {
     <FormNumStr
       img={img}
       labelNumInp="Номер шага"
-      labelStrInp="Тест"
+      labelStrInp="Текст"
       description="Редактор для шагов"
       text={remakeStep(numberScr, textarea)}
       getData={handelData}

@@ -128,3 +128,36 @@ export function remakeTopic(str: string) {
   </span>
 </span>`;
 }
+
+export function remakeImageLinkTest(link: string) {
+  return `<p>
+  <span
+    style="
+      font-family: georgia, 'times new roman', times, serif;
+      font-size: medium;
+    "
+    >&nbsp;</span
+  >
+</p>
+<p style="text-align: center">
+  <span
+    style="
+      text-decoration: underline;
+      font-family: georgia, 'times new roman', times, serif;
+      font-size: medium;
+      color: #4c526d;
+    "
+  >
+    <a
+      href="${link}"
+      target="_blank"
+    >
+      <img
+        src="https://peo.roskazna.ru/pluginfile.php/83640/mod_book/chapter/5049/%D1%82%D0%B5%D1%81%D1%82%D1%8B%201.png"
+        width="100%"
+        height="630"
+      />
+    </a>
+  </span>
+</p>`;
+}
