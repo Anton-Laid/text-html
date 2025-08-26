@@ -59,9 +59,7 @@ export function remakeStep(numberScr: number, textScr: string) {
     "
     data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium; color: #4c526d;"
     ><b
-      ><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span
-      ><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span
-      ><span>&nbsp;</span><span>&nbsp;</span>        Шаг ${numberScr}. ${textScr}</span
+      ><span  style="margin-left: 30px;">Шаг ${numberScr}. ${textScr}</span
       >
 </p>`;
 }

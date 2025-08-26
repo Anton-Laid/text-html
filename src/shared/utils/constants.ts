@@ -1,50 +1,63 @@
 export const dataLinks = [
   {
     id: 0,
-    label: "UL + LI - список",
+    label: "Список",
     href: "/ul",
+    color: "magenta",
+  },
+  {
+    id: 4,
+    label: "Обычный текст с абзацем",
+    href: "/text-margin-left",
+    color: "red",
   },
   {
     id: 1,
     label: "Image table",
     href: "/image-table",
+    color: "volcano",
   },
   {
     id: 2,
     label: "Шаги",
     href: "/steps",
+    color: "orange",
   },
   {
     id: 3,
     label: "Гиперссылка на документ",
     href: "/image-link",
+    color: "gold",
   },
-  {
-    id: 4,
-    label: "Отступ слевой стороны 30px",
-    href: "/text-margin-left",
-  },
+
   {
     id: 5,
     label: "Например с полосками",
     href: "/example",
+    color: "lime",
   },
   {
     id: 6,
     label: "Подтема",
     href: "/topic",
+    color: "green",
   },
   {
     id: 7,
     label: "Картинка с переходом на тест",
     href: "/image-link-test",
+    color: "cyan",
   },
   {
     id: 8,
     label: "Инструкция по прохождению теста",
     href: "/instruction-test",
+    color: "blue",
   },
 ];
+
+//  <Tag color="geekblue">geekblue</Tag>
+//       <Tag color="purple">purple</Tag>
 
 export const textInstructionTest = `<p>
   <span
