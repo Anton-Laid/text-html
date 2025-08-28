@@ -11,6 +11,7 @@ export default function TextMarginLeft() {
   return (
     <Textarea
       img={img}
+      placeholder="Введи текст"
       description="Отступ для текста"
       onRefactor={setTextarea}
       text={remakeMarginLeftText(textarea)}

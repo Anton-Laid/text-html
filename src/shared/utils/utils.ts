@@ -1,52 +1,45 @@
 export function remakeTextInHTMLUlLi(str: string) {
-  const refArr = str.split("\n");
-  return refArr
-    .map(
-      (text) => `<li style="list-style-type: none;">
-<ul>
-<li dir="ltr" aria-level="2">
-<p dir="ltr" role="presentation"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">${text}</span></p>
-</li>
-</ul>
-</li>`
-    )
-    .join("");
+  const lines = str.split("\n");
+
+  return `<ul><li data-mce-style="list-style-type: none;" style="list-style-type: none;"><ul>
+   ${lines
+     .map(
+       (line) =>
+         `  <li><span style="font-family: georgia, &quot;times new roman&quot;, times, serif; font-size: medium;">${line}</span></li>`
+     )
+     .join("")}
+ </ul></li></ul>`;
 }
 
+export function remakeTextNumbersHTMLUlLi(str: string) {
+  const lines = str.split("\n").filter(Boolean);
+
+  return `
+    <ol style="list-style-type:none;">
+      <li style="list-style-type:none;">
+        <ol>
+          ${lines
+            .map(
+              (line) =>
+                `<li><span style="font-family: georgia, &quot;times new roman&quot;, times, serif; font-size: medium;">${line}</span></li>`
+            )
+            .join("")}
+        </ol>
+      </li>
+    </ol>
+  `;
+}
 export function remakeTableImage(numberScr: number, textScr: string) {
-  return `<table
-        border={1}
-        frame={true}
-        style="border-color: #4c526d; border-width: 1px; width: 100%"
-      >
-        <tbody>
-          <tr>
-            <td>
-              <br />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="text-align: center">
-        <span
-          style="
-      font-family: georgia, 'times new roman', times, serif;
-      font-size: medium;
-    "
-        >
-          Рисунок ${numberScr}. ${textScr}
-        </span>
-      </p>
-      <p>
-        <span
-          style="
-      font-family: georgia, 'times new roman', times, serif;
-      font-size: medium;
-    "
-        >
-          &nbsp;
-        </span>
-      </p>`;
+  return ` <p dir="ltr">&nbsp;&nbsp;</p>
+<table border="1" frame="border" style="border-color: #4c526d; border-width: 1px; ; width: 100%;">
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">Рисунок ${numberScr}. ${textScr}</span></p>
+ <p dir="ltr">&nbsp;&nbsp;</p>`;
 }
 
 export function remakeStep(numberScr: number, textScr: string) {
@@ -62,6 +55,15 @@ export function remakeStep(numberScr: number, textScr: string) {
       ><span  style="margin-left: 30px;">Шаг ${numberScr}. ${textScr}</span
       >
 </p>`;
+}
+
+export function remakeTable(numberScr: number, textScr: string) {
+  return `<p dir="ltr"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">&nbsp;</span></p>
+  <p><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">&nbsp;Таблица ${numberScr}.&nbsp;<span id="docs-internal-guid-7a635731-7fff-96e9-1738-1178a32c75c2">
+${textScr}</span></span></p>
+<p style="text-align: left;" data-mce-style="text-align: left;"><span><img src="https://peo.roskazna.ru/draftfile.php/88628/user/draft/805114746/4_3_%D0%9F%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B0_%D0%B2_%D1%8D%D0%BA%D1%81%D0%BF%D0%BB%D1%83%D0%B0%D1%82%D0%B0%D1%86%D0%B8%D1%8E_%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2_%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85_%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2.png" width="4953" height="3379" data-mce-src="https://peo.roskazna.ru/draftfile.php/88628/user/draft/805114746/4_3_%D0%9F%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B0_%D0%B2_%D1%8D%D0%BA%D1%81%D0%BF%D0%BB%D1%83%D0%B0%D1%82%D0%B0%D1%86%D0%B8%D1%8E_%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2_%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85_%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2.png"></span></p>
+<p dir="ltr"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">&nbsp;</span></p>
+  `;
 }
 
 export function remakeImageLink(link: string, text: string) {
@@ -85,16 +87,21 @@ export function remakeImageLink(link: string, text: string) {
 }
 
 export function remakeMarginLeftText(str: string) {
-  return `<p>
+  const refArr = str.split("\n");
+  return refArr
+    .map(
+      (text) => `<p>
   <span
     style="
       font-size: medium;
       font-family: georgia, 'times new roman', times, serif;
       margin-left: 30px;
     "
-  >${str}</span
+  >${text}</span
   >
-</p>`;
+</p>`
+    )
+    .join("");
 }
 
 export function remakeExample(str: string) {
@@ -158,4 +165,44 @@ export function remakeImageLinkTest(link: string) {
     </a>
   </span>
 </p>`;
+}
+
+export function remakeTableConst(num: string, str: string) {
+  return `<p><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">&nbsp; &nbsp;</span></p>
+  <p dir="ltr"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">Таблица ${num}. ${str}</span></p>
+  <table border="1" style="border-color: #4c526d; border-width: 1px; width: 100%; border-style: solid;" data-mce-style="border-color: #4c526d; border-width: 1px; width: 100%; border-style: solid;">
+  <p dir="ltr"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;"><br data-mce-bogus="1"></span></p>
+  <p dir="ltr">&nbsp;&nbsp;</p>`;
+}
+
+export function remakeTableDrawing(num: string, str: string) {
+  return `<p dir="ltr">&nbsp;&nbsp;</p>
+    <p dir="ltr" style="text-align: center;" data-mce-style="text-align: center;"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">Рисунок ${num}. ${str}</span></p>
+    <-- Удалить строку -->
+    <p dir="ltr">&nbsp;&nbsp;</p>
+    <p dir="ltr">&nbsp;&nbsp;</p>`;
+}
+
+export function remakeThree(num: string, str: string) {
+  return `<p dir="ltr">&nbsp;&nbsp;</p>
+  <p dir="ltr"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">Таблица ${num}. ${str} </span></p>
+  Вставить)
+    <p dir="ltr">&nbsp;&nbsp;</p>`;
+}
+
+export function remakeWhitespaceImageText(num: string, str: string) {
+  return `<p dir="ltr">&nbsp;&nbsp;</p>
+  Удалить строчку
+  <p dir="ltr" style="text-align: center;" data-mce-style="text-align: center;"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">Рисунок ${num}. ${str}</span></p>
+  <p dir="ltr">&nbsp;&nbsp;</p>
+  `;
+}
+
+export function remakeAnimationText(num: string, str: string) {
+  return `<p dir="ltr">&nbsp;&nbsp;</p>
+  <p dir="ltr"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;"></span></p>
+Удалить строчку
+<p dir="ltr" style="text-align: center;" data-mce-style="text-align: center;"><span style="font-family: georgia, 'times new roman', times, serif; font-size: medium;" data-mce-style="font-family: georgia, 'times new roman', times, serif; font-size: medium;">Анимированный рисунок ${num}. ${str}</span></p>
+  <p dir="ltr">&nbsp;&nbsp;</p>
+  `;
 }

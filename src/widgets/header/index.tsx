@@ -14,7 +14,7 @@ export const Header = () => {
           </Link>
         ))}
       </ul>
-      <div className="flex gap-1">
+      <div className="flex gap-1 max-[500px]: flex-col">
         <ButtonCopy label="пробел" copy="<p>&nbsp;</p>" />
         <ButtonCopy label="#4c526d" copy="#4c526d" />
       </div>

@@ -1,11 +1,5 @@
 export const dataLinks = [
   {
-    id: 0,
-    label: "Список",
-    href: "/ul",
-    color: "magenta",
-  },
-  {
     id: 4,
     label: "Обычный текст с абзацем",
     href: "/text-margin-left",
@@ -13,9 +7,15 @@ export const dataLinks = [
   },
   {
     id: 1,
-    label: "Image table",
+    label: "Вложения",
     href: "/image-table",
     color: "volcano",
+  },
+  {
+    id: 0,
+    label: "Список",
+    href: "/ul",
+    color: "magenta",
   },
   {
     id: 2,
@@ -24,8 +24,14 @@ export const dataLinks = [
     color: "orange",
   },
   {
+    id: 6,
+    label: "Подтема",
+    href: "/topic",
+    color: "green",
+  },
+  {
     id: 3,
-    label: "Гиперссылка на документ",
+    label: "Гиперссылка",
     href: "/image-link",
     color: "gold",
   },
@@ -37,19 +43,19 @@ export const dataLinks = [
     color: "lime",
   },
   {
-    id: 6,
-    label: "Подтема",
-    href: "/topic",
-    color: "green",
+    id: 7,
+    label: "О сложном",
+    href: "/image-link-test",
+    color: "geekblue",
   },
   {
-    id: 7,
+    id: 8,
     label: "Картинка с переходом на тест",
     href: "/image-link-test",
     color: "cyan",
   },
   {
-    id: 8,
+    id: 9,
     label: "Инструкция по прохождению теста",
     href: "/instruction-test",
     color: "blue",

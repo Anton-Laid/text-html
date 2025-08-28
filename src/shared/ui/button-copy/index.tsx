@@ -3,8 +3,10 @@ import { Button } from "antd";
 import { useState } from "react";
 
 interface ButtonCopyProps {
+  extClassName?: string;
   copy: string;
   label: string;
+  style?: React.CSSProperties;
 }
 
 export const ButtonCopy = (props: ButtonCopyProps) => {

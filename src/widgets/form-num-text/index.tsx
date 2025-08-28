@@ -1,10 +1,11 @@
 "use client";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { Form, Input, Tag } from "antd";
+import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 
-import Image, { StaticImageData } from "next/image";
-import { ResultText } from "../result-text";
+import { ButtonCopy } from "@/shared/ui";
+import { Result } from "../result";
 
 type RequiredMark = boolean | "optional" | "customize";
 
@@ -26,6 +27,8 @@ interface FormNumStrProps {
   img: StaticImageData;
   description: string;
   labelNumInp: string;
+  placeholderOne: string;
+  placeholderTwo: string;
   labelStrInp: string;
   text: string;
   getData: (str: string, num: number) => void;
@@ -36,6 +39,8 @@ export const FormNumStr = ({
   description,
   labelNumInp,
   labelStrInp,
+  placeholderOne,
+  placeholderTwo,
   text,
   getData,
 }: FormNumStrProps) => {
@@ -60,42 +65,41 @@ export const FormNumStr = ({
   }, [textarea, numberScr]);
 
   return (
-    <form>
-      <div className="w-full flex flex-col gap-10 items-center mt-[2rem]">
-        <Image alt="img" src={img} />
-        <p>{description}</p>
+    <div className="w-full flex flex-col gap-10 items-center mt-[2rem]">
+      <Image alt="img" src={img} priority />
+      <p>{description}</p>
 
-        <Form
-          form={form}
-          layout="vertical"
-          initialValues={{ requiredMarkValue: requiredMark }}
-          onValuesChange={onRequiredTypeChange}
-          requiredMark={
-            requiredMark === "customize" ? customizeRequiredMark : requiredMark
-          }
+      <Form
+        form={form}
+        layout="vertical"
+        initialValues={{ requiredMarkValue: requiredMark }}
+        onValuesChange={onRequiredTypeChange}
+        requiredMark={
+          requiredMark === "customize" ? customizeRequiredMark : requiredMark
+        }
+      >
+        <Form.Item label={labelNumInp} required tooltip="Цифра шага">
+          <Input
+            placeholder={placeholderOne}
+            onChange={(e) => setNumberScr(+e.target.value)}
+          />
+        </Form.Item>
+        <Form.Item
+          label={labelStrInp}
+          required
+          tooltip={{
+            title: "Впишите текст шага",
+            icon: <InfoCircleOutlined />,
+          }}
         >
-          <Form.Item label={labelNumInp} required tooltip="Цифра шага">
-            <Input
-              placeholder="номер шага"
-              onChange={(e) => setNumberScr(+e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label={labelStrInp}
-            required
-            tooltip={{
-              title: "Впишите текст шага",
-              icon: <InfoCircleOutlined />,
-            }}
-          >
-            <Input
-              placeholder="текст"
-              onChange={(e) => setTextarea(e.target.value)}
-            />
-          </Form.Item>
-        </Form>
-        <ResultText text={text} />
-      </div>
-    </form>
+          <Input
+            placeholder={placeholderTwo}
+            onChange={(e) => setTextarea(e.target.value)}
+          />
+        </Form.Item>
+      </Form>
+      <Result text={text} />
+      <ButtonCopy copy={text} label="" />
+    </div>
   );
 };
