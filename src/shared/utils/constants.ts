@@ -45,7 +45,7 @@ export const dataLinks = [
   {
     id: 7,
     label: "О сложном",
-    href: "/image-link-test",
+    href: "/temp",
     color: "geekblue",
   },
   {
@@ -65,7 +65,9 @@ export const dataLinks = [
 //  <Tag color="geekblue">geekblue</Tag>
 //       <Tag color="purple">purple</Tag>
 
-export const textInstructionTest = `<p>
+export const textInstructionTest = `
+<p dir="ltr">&nbsp;&nbsp;</p>
+<p>
   <span
     style="
       font-family: georgia, 'times new roman', times, serif;
@@ -534,4 +536,5 @@ export const textInstructionTest = `<p>
     > </span
   >
 </p>
-<p></p>`;
+<p></p>
+<p dir="ltr">&nbsp;&nbsp;</p>`;

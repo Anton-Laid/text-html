@@ -145,7 +145,10 @@ export function remakeTopic(str: string) {
 }
 
 export function remakeImageLinkTest(link: string) {
-  return `<p>
+  return `
+    <p dir="ltr">&nbsp;&nbsp;</p>
+    <p dir="ltr">&nbsp;&nbsp;</p>
+  <p>
   <span
     style="
       font-family: georgia, 'times new roman', times, serif;
