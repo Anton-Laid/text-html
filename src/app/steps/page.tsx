@@ -22,6 +22,8 @@ export default function Steps() {
       description="Редактор для шагов"
       text={remakeStep(numberScr, textarea)}
       getData={handelData}
+      placeholderOne=""
+      placeholderTwo=""
     />
   );
 }

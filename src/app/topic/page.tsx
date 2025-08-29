@@ -10,6 +10,7 @@ export default function Topic() {
 
   return (
     <Textarea
+      placeholder=""
       img={img}
       description="Заполнение подтемы"
       onRefactor={setTextarea}

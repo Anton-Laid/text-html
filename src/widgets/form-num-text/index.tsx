@@ -32,6 +32,7 @@ interface FormNumStrProps {
   labelStrInp: string;
   text: string;
   getData: (str: string, num: number) => void;
+  tooltip?: string;
 }
 
 export const FormNumStr = ({
@@ -43,6 +44,7 @@ export const FormNumStr = ({
   placeholderTwo,
   text,
   getData,
+  tooltip,
 }: FormNumStrProps) => {
   const [textarea, setTextarea] = useState<string>("");
   const [numberScr, setNumberScr] = useState<number>(0);
@@ -78,7 +80,7 @@ export const FormNumStr = ({
           requiredMark === "customize" ? customizeRequiredMark : requiredMark
         }
       >
-        <Form.Item label={labelNumInp} required tooltip="Цифра шага">
+        <Form.Item label={labelNumInp} required tooltip={tooltip}>
           <Input
             placeholder={placeholderOne}
             onChange={(e) => setNumberScr(+e.target.value)}

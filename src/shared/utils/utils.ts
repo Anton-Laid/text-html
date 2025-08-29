@@ -43,7 +43,9 @@ export function remakeTableImage(numberScr: number, textScr: string) {
 }
 
 export function remakeStep(numberScr: number, textScr: string) {
-  return `<p>
+  return `
+  <p dir="ltr">&nbsp;&nbsp;</p>
+  <p>
   <span
     style="
       font-family: georgia, 'times new roman', times, serif;
@@ -54,7 +56,9 @@ export function remakeStep(numberScr: number, textScr: string) {
     ><b
       ><span  style="margin-left: 30px;">Шаг ${numberScr}. ${textScr}</span
       >
-</p>`;
+</p>
+<p dir="ltr">&nbsp;&nbsp;</p>
+`;
 }
 
 export function remakeTable(numberScr: number, textScr: string) {
@@ -66,24 +70,26 @@ ${textScr}</span></span></p>
   `;
 }
 
-export function remakeImageLink(link: string, text: string) {
-  return `  <p id="yui_3_17_2_1_1751443053004_571" style="text-align: center">
-      <span style="text-decoration: underline"
-        ><span
-          style="
-            font-family: georgia, 'times new roman', times, serif;
-            font-size: medium;
-            color: #4c526d;
-            text-decoration: underline;
-          "
-        >
-          <a href="${link}" target="_blank">
-            <strong>${text}</strong>
-            ></a
-          ></span
-        ></span
-      >
-    </p>`;
+export function remakeImageLink(
+  num: string,
+  link: string,
+  text: string,
+  pdf: boolean,
+  center: boolean,
+  whitespace: boolean
+) {
+  return `${whitespace ? '<p dir="ltr">&nbsp;&nbsp;</p>' : ""}
+    ${
+      !center
+        ? `<p id="yui_3_17_2_1_1751443053004_571" style="margin-left:30px; text-align: left;" data-mce-style="text-align: left;"><strong style="color: rgb(76, 82, 109); font-family: georgia, &quot;times new roman&quot;, times, serif; font-size: medium; text-decoration-line: underline;" data-mce-style="color: #4c526d; font-family: georgia, 'times new roman', times, serif; font-size: medium; text-decoration-line: underline;"><a href="${link}" target="_blank" data-mce-href="https://peo.roskazna.ru/0">${num} ${text} ${
+            pdf ? "(версия pdf)" : ""
+          }</a><br></strong></p>`
+        : `<p id="yui_3_17_2_1_1751443053004_571" style="text-align: center;"><strong style="color: rgb(76, 82, 109); font-family: georgia, &quot;times new roman&quot;, times, serif; font-size: medium; text-decoration-line: underline;"><a href="https://peo.roskazna.ru/0" target="_blank" data-mce-href="https://peo.roskazna.ru/0">${num} ${text} ${
+            pdf ? "(версия pdf)" : ""
+          }</a>&nbsp;</strong></p>`
+    }
+     ${whitespace ? '<p dir="ltr">&nbsp;&nbsp;</p>' : ""}
+    `;
 }
 
 export function remakeMarginLeftText(str: string) {
@@ -118,7 +124,9 @@ export function remakeExample(str: string) {
 }
 
 export function remakeTopic(str: string) {
-  return `<span style="display: flex; gap: 30px">
+  return `
+  <p dir="ltr">&nbsp;&nbsp;</p>
+  <span style="display: flex; gap: 30px">
   <img
     style="max-width: 54px; max-height: 18px"
     src="https://peo.roskazna.ru/draftfile.php/88628/user/draft/3356934/%D0%91%D0%BB%D0%BE%D0%BA%20%D0%B4%D0%BB%D1%8F%20%D0%B3%D0%BB%D0%B0%D0%B2%D1%8B%20%282%29.png"
@@ -131,7 +139,9 @@ export function remakeTopic(str: string) {
     "
     ><b style="font-size: x-large; margin: 0">${str}</b>
   </span>
-</span>`;
+</span>
+<p dir="ltr">&nbsp;&nbsp;</p>
+`;
 }
 
 export function remakeImageLinkTest(link: string) {
