@@ -10,6 +10,7 @@ export default function Example() {
 
   return (
     <Textarea
+      placeholder=""
       img={img}
       description="Отступ для текста"
       onRefactor={setTextarea}
